@@ -35,6 +35,8 @@ Minimize a real-valued function `f` with given gradient `fprime` with starting p
 
 The algorithm will take at most `maxSteps` steps of length `stepSize`, unless the resulting positions the same up to a difference of `stepTolerance`, or the resulting objective function values are the same up to a difference of `objTolerance`.
 
+Note that for each gradient step, the function(al) will be evaluated once, as will the gradient, so storing those values in a global variable somewhere will provide a record of the steps taken during the gradient descent process.
+
 Returns a tuple `(xMin, fMin, s)`, where `xMin` is the final position, `fMin` is the objective function value, and `s` is a `minimizeStatus` object.
 """
 function minimize end
@@ -88,7 +90,9 @@ function minimize(f, fprime, x0::AbstractArray{<:Real}, fCurr = f(x0); stepSize 
         copyto!(xPrev, xCurr)
         fPrev = fCurr
 
-        for (i, fprimeVal) in enumerate(fprime(xPrev))
+        gradCurr = fprime(xPrev)
+
+        for (i, fprimeVal) in enumerate(gradCurr)
             @inbounds xCurr[i] = xPrev[i] - stepSize * fprimeVal
         end
 
