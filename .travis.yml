@@ -10,9 +10,6 @@ os:
   - 0.7
   - nightly
 
-notifications:
-  email: false
-
 ## uncomment the following lines to allow failures on nightly julia
 ## (tests will run but not make your overall status red)
 #matrix:
