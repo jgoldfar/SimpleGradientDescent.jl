@@ -1,15 +1,17 @@
 ## Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
+
 os:
   - linux
   - osx
-julia:
+
+  julia:
   - 0.6
+  - 0.7
   - nightly
+
 notifications:
   email: false
-git:
-  depth: 99999999
 
 ## uncomment the following lines to allow failures on nightly julia
 ## (tests will run but not make your overall status red)
@@ -20,6 +22,7 @@ git:
 ## uncomment the following lines to override the default test script
 #script:
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("SimpleGradientDescent"); Pkg.test("SimpleGradientDescent"; coverage=true)'
+
 after_success:
   # push coverage results to Coveralls
   - julia -e 'cd(Pkg.dir("SimpleGradientDescent")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
