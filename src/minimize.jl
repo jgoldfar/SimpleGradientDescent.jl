@@ -2,8 +2,7 @@ export minimize, minimizeStatus
 
 @static if VERSION >= v"0.7-"
     using LinearAlgebra: norm
-end
-@static if VERSION < v"0.7.0-DEV.3057"
+else
     using Compat: copyto!
 end
 

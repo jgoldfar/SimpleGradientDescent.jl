@@ -1,14 +1,14 @@
-authors = ["Jonathan Goldfarb <jgoldfar@gmail.com>"]
 name = "SimpleGradientDescent"
 uuid = "7615ede0-6577-11e8-3606-13ee2db7d2d8"
+authors = ["Jonathan Goldfarb <jgoldfar@gmail.com>"]
 version = "0.1.0"
 
 [deps]
-Compat = "34da2185-b29b-5c13-b0c7-acf172513d20"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 [targets]
-test = ["Test"]
+test = ["Test", "Random"]

@@ -4,7 +4,7 @@ using SimpleGradientDescent
     using Base.Test
 else
     using Test
-    using Random: srand
+    using Random: seed!
     using LinearAlgebra: norm
 end
 
@@ -27,7 +27,12 @@ f1prime(x) = 2*x
     end
 end
 
-randIndRNG = srand(20)
+@static if VERSION < v"0.7-"
+  randIndRNG = srand(20)
+else
+  randIndRNG = seed!(20)
+end
+
 f2(x) = norm(x)^2
 f2prime(x) = 2*x
 @testset "vector argument length N=$N" for N in 10:5:20
